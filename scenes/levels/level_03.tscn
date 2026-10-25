@@ -12,11 +12,7 @@ point_count = 14
 
 [node name="Level03" unique_id=1543580468 instance=ExtResource("1_level")]
 
-[node name="Ground" parent="." index="0"]
-position = Vector2(4, -54)
-polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 190, 1079, 0, 1080)
-
-[node name="Path" parent="." index="6"]
+[node name="Path" parent="." index="1"]
 curve = SubResource("Curve2D_path")
 
 [node name="BuildPad1" parent="BuildPads" index="0" unique_id=1358412984 instance=ExtResource("2_build_pad")]

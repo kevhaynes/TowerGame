@@ -109,8 +109,9 @@ The research tree (`data/progression/research_tree.json`) groups towers into cat
 
 Levels are scenes, drawn in the Godot editor. Each level is `scenes/levels/level_NN.tscn`, a scene inheriting `scenes/game/level.tscn`:
 
+- Set `level_size` on the scene's root node: the area the ground covers and the camera scrolls over, from the top-left origin. It defaults to one screen (1920x1080) and may be up to `LevelLayout.MAX_LEVEL_SIZE` (3840x2160, to be revisited after playtesting). In larger levels the player drags to scroll and pinches to zoom (`LevelCamera`: from 2x in out to where the level just fills the screen), starting on the path's ENTRY; a short press is still a tap on a build pad, a drag or pinch is not.
 - Draw the enemy route on the `Path` node (a `LevelPath`, i.e. a `Path2D`) with the editor's Path2D tools; use point handles for curves. It renders as the road at full width in the editor and in game, with ENTRY/EXIT markers placed automatically at its ends.
-- Add `scenes/game/build_pad.tscn` instances as children of `BuildPads` and drag them into place. Pads that break a layout rule (too close to the road or another pad, off screen, under the HUD buttons) are ringed in red in the editor.
+- Add `scenes/game/build_pad.tscn` instances as children of `BuildPads` and drag them into place. Pads that break a layout rule (too close to the road or another pad, outside the level, under the HUD buttons) are ringed in red in the editor.
 - A backdrop image from `assets/maps/` can be added as a `Sprite2D` below the `Path` node.
 - `data/levels/level_NN.json` holds the level's `id`, `display_name`, `order`, `scene` path, `starting_credits`, `health` and enemy `waves`; the level finds its JSON by matching `scene`, so a level scene can be run directly with "Run Current Scene".
 

@@ -12,7 +12,7 @@ point_count = 9
 
 [node name="Level02" unique_id=875890434 instance=ExtResource("1_level")]
 
-[node name="Path" parent="." index="6"]
+[node name="Path" parent="." index="1"]
 curve = SubResource("Curve2D_path")
 
 [node name="BuildPad1" parent="BuildPads" index="0" unique_id=439069300 instance=ExtResource("2_build_pad")]

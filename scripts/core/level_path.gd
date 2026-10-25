@@ -101,8 +101,12 @@ func _draw_pad_warnings(points: PackedVector2Array) -> void:
 			pads.append(child as Node2D)
 			pad_positions.append((child as Node2D).global_position)
 	var global_points: PackedVector2Array = global_transform * points
+	var level_size: Vector2 = LevelLayout.level_size_of(get_parent())
 	for index: int in pads.size():
-		if not LevelLayout.pad_problems(index, pad_positions, global_points).is_empty():
+		var problems: PackedStringArray = LevelLayout.pad_problems(
+			index, pad_positions, global_points, level_size
+		)
+		if not problems.is_empty():
 			draw_arc(
 				to_local(pad_positions[index]),
 				WARNING_RADIUS,

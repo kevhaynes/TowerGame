@@ -16,14 +16,13 @@ var is_occupied: bool = false
 func _input_event(
 	_viewport: Viewport, event: InputEvent, _shape_idx: int
 ) -> void:
-	# Occupied pads still report taps, so the level can show the tower's range.
+	# A tap is a press and release: selecting on release lets the LevelCamera
+	# turn a press into a pan instead (it then consumes the release). Touches
+	# arrive as emulated mouse events, so they are not handled twice. Occupied
+	# pads still report taps, so the level can open the tower's panel.
 	if event is InputEventMouseButton:
 		var mouse_event := event as InputEventMouseButton
-		if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.pressed:
-			selected.emit(self)
-	elif event is InputEventScreenTouch:
-		var touch_event := event as InputEventScreenTouch
-		if touch_event.pressed:
+		if mouse_event.button_index == MOUSE_BUTTON_LEFT and not mouse_event.pressed:
 			selected.emit(self)
 
 

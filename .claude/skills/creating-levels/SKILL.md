@@ -32,10 +32,10 @@ Copy an existing `scenes/levels/level_NN.tscn` and change it. It must keep this 
 ```
 
 - Curve `points` are triples of (in handle, out handle, position) per point; zero handles give straight segments.
-- Coordinates are in the viewport set in `project.godot` (`display/window/size/*`): read it, don't assume.
+- Coordinates run from the top-left of the level. Its size is `level_size` on the root node (default one screen, the viewport in `project.godot`; maximum `LevelLayout.MAX_LEVEL_SIZE`, 3840x2160). Ask whether the level should be larger than one screen; if so set it on the root node, e.g. `level_size = Vector2i(2880, 1620)` under `[node name="LevelNN" ...]`. The player drags to scroll; the camera starts on the path's ENTRY.
 - The road is 123px wide. Keep parallel runs at least ~255px apart (centre to centre) so pads fit between them. Round corners with handles or several close points.
 - Put pads inside bends and between parallel runs, where tower range (180-675px) covers a lot of road.
-- ENTRY/EXIT markers are drawn automatically ~36px beyond the path ends, so start and end the path a little inside the screen edge.
+- ENTRY/EXIT markers are drawn automatically ~36px beyond the path ends, so start and end the path a little inside the level edge (or just beyond it, so enemies walk in from off the map).
 - Never hand-write `.uid` or `.import` files.
 
 ## Step 3: Create the JSON
@@ -50,7 +50,7 @@ godot --headless -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs 
 godot --headless --quit-after 240 res://scenes/levels/level_NN.tscn   # runs the level directly
 ```
 
-`test_level_layout.gd` loads every level scene and applies the `LevelLayout` rules (pad clearance 112.5px, pad spacing 114px, on screen, clear of the HUD buttons), and `test_level_catalog.gd` checks the JSON. Quote any layout problem it reports and fix the scene. If `godot` isn't on PATH, look for an install before saying tests could not run. Tell the user they can open the scene to reshape the path (select `Path`, use the Path2D toolbar) and drag pads; pads breaking a rule show a red ring.
+`test_level_layout.gd` loads every level scene and applies the `LevelLayout` rules (level_size between one screen and the maximum, pad clearance 112.5px, pad spacing 114px, inside the level, clear of the HUD buttons), and `test_level_catalog.gd` checks the JSON. Quote any layout problem it reports and fix the scene. If `godot` isn't on PATH, look for an install before saying tests could not run. Tell the user they can open the scene to reshape the path (select `Path`, use the Path2D toolbar) and drag pads; pads breaking a rule show a red ring.
 
 ## Common mistakes
 
@@ -63,5 +63,6 @@ godot --headless --quit-after 240 res://scenes/levels/level_NN.tscn   # runs the
 | JSON `scene` path doesn't match the file | Level missing from the menu; "No level definition ... uses the scene" error when run directly |
 | Pads added somewhere other than under `BuildPads` | They are not tappable and are not validated |
 | Moving or scaling the `Path` node | Allowed (handled by `LevelLayout.world_curve`), but keep `Enemies` and `Towers` at the origin |
-| Assuming a fixed viewport | Read the viewport size from `project.godot` (currently 1920x1080) |
+| Assuming a level is one screen | Read the root's `level_size` (default 1920x1080, up to `LevelLayout.MAX_LEVEL_SIZE`) |
+| Pads near the top-left of a large level | The HUD buttons cover the level's top-left corner whatever the scroll; keep pads clear of it |
 | Duplicate `order` | Unique, normally highest + 1 |

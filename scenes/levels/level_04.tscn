@@ -6,13 +6,14 @@
 [sub_resource type="Curve2D" id="Curve2D_path"]
 bake_interval = 4.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 62, 1096, -469.49997, 131.99998, 469.49997, -131.99998, 489, 121, 52.499996, -214.49998, -52.499996, 214.49998, 951, 448, 41.999996, -193.49998, -41.999996, 193.49998, 302, 713, -193.49998, 92.99999, 193.49998, -92.99999, 580, 913, -331.49997, 83.99999, 331.49997, -83.99999, 660, 334, -568.49994, 44.999996, 568.49994, -44.999996, 1327, 991, 181.5, 188.99998, -181.5, -188.99998, 1681, 539, -61.499992, 248.99998, 61.499992, -248.99998, 1173, 257, -127.49999, 33, 127.49999, -33, 1677, 238, 0, 0, 0, 0, 1851, -11)
+"points": PackedVector2Array(0, 0, 0, 0, 97, 2170, -469.49997, 131.99998, 469.49997, -131.99998, 489, 121, 52.499996, -214.49998, -52.499996, 214.49998, 951, 448, 41.999996, -193.49998, -41.999996, 193.49998, 302, 713, -193.49998, 92.99999, 193.49998, -92.99999, 580, 913, -331.49997, 83.99999, 331.49997, -83.99999, 660, 334, -568.49994, 44.999996, 568.49994, -44.999996, 1327, 991, 181.5, 188.99998, -181.5, -188.99998, 1681, 539, -61.499992, 248.99998, 61.499992, -248.99998, 1173, 257, -196.66649, -245.39511, 196.66649, 245.39511, 2203, 337, 342.3741, -140.06213, -342.3741, 140.06213, 1821, 1283, 107.20805, -268.02014, -107.20805, 268.02014, 436, 1471, -420.18643, -8.645811, 420.18643, 8.645811, 642, 2016, -499.72787, 34.583244, 499.72787, -34.583244, 1437, 1580, -390.79065, 191.93701, 390.79065, -191.93701, 2310, 2030, 319.89502, 276.66595, -319.89502, -276.66595, 2921, 1177, -209.22864, -252.45769, 209.22864, 252.45769, 2442, 1558, -190.20786, 409.81143, 190.20786, -409.81143, 3384, 1613, -39.77073, 390.79065, 39.77073, -390.79065, 2905, 650, -179.83287, 69.16649, 179.83287, -69.16649, 3528, 413, 0, 0, 0, 0, 3699, -43)
 }
-point_count = 11
+point_count = 21
 
 [node name="Level04" unique_id=172620343 instance=ExtResource("1_level")]
+level_size = Vector2i(3840, 2160)
 
-[node name="Path" parent="." index="6"]
+[node name="Path" parent="." index="1"]
 curve = SubResource("Curve2D_path")
 
 [node name="BuildPad1" parent="BuildPads" index="0" unique_id=1360290188 instance=ExtResource("2_build_pad")]
@@ -30,7 +31,25 @@ position = Vector2(400, 498)
 [node name="BuildPad5" parent="BuildPads" index="4" unique_id=335168939 instance=ExtResource("2_build_pad")]
 position = Vector2(1191, 842)
 
-[node name="BuildPad6" parent="BuildPads" index="5" unique_id=912436629 instance=ExtResource("2_build_pad")]
+[node name="BuildPad7" parent="BuildPads" index="5" unique_id=1527949509 instance=ExtResource("2_build_pad")]
+position = Vector2(2706, 1599)
+
+[node name="BuildPad8" parent="BuildPads" index="6" unique_id=935574515 instance=ExtResource("2_build_pad")]
+position = Vector2(2695, 1252)
+
+[node name="BuildPad9" parent="BuildPads" index="7" unique_id=837658598 instance=ExtResource("2_build_pad")]
+position = Vector2(3224, 1596)
+
+[node name="BuildPad10" parent="BuildPads" index="8" unique_id=1181600259 instance=ExtResource("2_build_pad")]
+position = Vector2(2176, 1909)
+
+[node name="BuildPad11" parent="BuildPads" index="9" unique_id=1588351220 instance=ExtResource("2_build_pad")]
+position = Vector2(1455, 1743)
+
+[node name="BuildPad12" parent="BuildPads" index="10" unique_id=1971078856 instance=ExtResource("2_build_pad")]
+position = Vector2(499, 1835)
+
+[node name="BuildPad6" parent="BuildPads" index="11" unique_id=912436629 instance=ExtResource("2_build_pad")]
 position = Vector2(1641, 767)
 
 [node name="LevelsButton" parent="Hud" index="0"]

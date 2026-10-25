@@ -1,70 +1,15 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scenes/game/level.gd" id="1_level"]
-[ext_resource type="Script" path="res://scripts/core/curve_path_renderer.gd" id="2_curve_renderer"]
+[ext_resource type="Script" path="res://scripts/core/level_ground.gd" id="2_level_ground"]
 [ext_resource type="Script" path="res://scripts/core/level_path.gd" id="3_level_path"]
-
-[sub_resource type="Curve2D" id="Curve2D_grid_vertical_a"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 1080)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_grid_vertical_b"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 960, 0, 0, 0, 0, 0, 960, 1080)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_grid_vertical_c"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1440, 0, 0, 0, 0, 0, 1440, 1080)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_grid_horizontal_a"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 360, 0, 0, 0, 0, 1920, 360)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_grid_horizontal_b"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 1920, 720)
-}
-point_count = 2
+[ext_resource type="Script" path="res://scripts/core/level_camera.gd" id="4_level_camera"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_level")
 
-[node name="Ground" type="Polygon2D" parent="."]
-color = Color(0.075, 0.118, 0.137, 1)
-polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
-
-[node name="GridVerticalA" type="Path2D" parent="."]
-curve = SubResource("Curve2D_grid_vertical_a")
-script = ExtResource("2_curve_renderer")
-line_color = Color(0.14, 0.21, 0.22, 0.42)
-
-[node name="GridVerticalB" type="Path2D" parent="."]
-curve = SubResource("Curve2D_grid_vertical_b")
-script = ExtResource("2_curve_renderer")
-line_color = Color(0.14, 0.21, 0.22, 0.42)
-
-[node name="GridVerticalC" type="Path2D" parent="."]
-curve = SubResource("Curve2D_grid_vertical_c")
-script = ExtResource("2_curve_renderer")
-line_color = Color(0.14, 0.21, 0.22, 0.42)
-
-[node name="GridHorizontalA" type="Path2D" parent="."]
-curve = SubResource("Curve2D_grid_horizontal_a")
-script = ExtResource("2_curve_renderer")
-line_color = Color(0.14, 0.21, 0.22, 0.42)
-
-[node name="GridHorizontalB" type="Path2D" parent="."]
-curve = SubResource("Curve2D_grid_horizontal_b")
-script = ExtResource("2_curve_renderer")
-line_color = Color(0.14, 0.21, 0.22, 0.42)
+[node name="Ground" type="Node2D" parent="."]
+script = ExtResource("2_level_ground")
 
 [node name="Path" type="Path2D" parent="."]
 script = ExtResource("3_level_path")
@@ -76,6 +21,9 @@ script = ExtResource("3_level_path")
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("4_level_camera")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 

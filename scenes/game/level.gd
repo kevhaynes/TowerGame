@@ -1,8 +1,8 @@
 extends Node2D
 
 ## Root script of every level scene. Level scenes inherit level.tscn and add
-## their own layout: draw the "Path" (a LevelPath) and add BuildPad instances
-## under "BuildPads". Name, order, starting credits, health and enemy waves
+## their own layout: set level_size, draw the "Path" (a LevelPath) and add
+## BuildPad instances under "BuildPads". Name, order, starting credits, health and enemy waves
 ## come from the data/levels JSON whose "scene" points at the level scene.
 
 const PLAY_TEXT: String = "PLAY"
@@ -18,7 +18,13 @@ const BUILD_PREVIEW_MODULATE: Color = Color(1, 1, 1, 0.5)
 ## refund is based on.
 const PURCHASE_COST_META: StringName = &"purchase_cost"
 
+## The level's size in pixels: the area the ground covers and the camera
+## scrolls over, from the top-left origin. At least one screen (the project
+## viewport) and at most LevelLayout.MAX_LEVEL_SIZE.
+@export var level_size: Vector2i = LevelLayout.DEFAULT_LEVEL_SIZE
+
 @onready var level_path: Path2D = $Path
+@onready var camera: LevelCamera = $Camera
 @onready var projectile_container: Node2D = $ProjectileContainer
 @onready var towers_container: Node2D = $Towers
 @onready var build_pads: Node2D = $BuildPads
@@ -81,6 +87,8 @@ func _ready() -> void:
 		push_error("Level %s has no path; draw one on its Path node." % _level["id"])
 		return
 	_path_curve = LevelLayout.world_curve(level_path, self)
+	# Start on the entry, where the first enemies appear.
+	camera.setup(Vector2(level_size), _path_curve.get_point_position(0))
 	_connect_build_pads()
 
 	_wallet = Wallet.new(int(_level["starting_credits"]))

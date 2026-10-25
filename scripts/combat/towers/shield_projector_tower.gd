@@ -84,9 +84,9 @@ func _locate_barrier() -> void:
 	if _is_located or path_curve == null or not is_inside_tree():
 		return
 	_is_located = true
-	var offset: float = path_curve.get_closest_offset(global_position)
-	if global_position.distance_to(path_curve.sample_baked(offset)) <= attack_range:
-		_barrier_distance = offset
+	var closest_distance: float = path_curve.get_closest_offset(global_position)
+	if global_position.distance_to(path_curve.sample_baked(closest_distance)) <= attack_range:
+		_barrier_distance = closest_distance
 	else:
 		push_warning("%s has no path within range; its barrier is inactive." % display_name)
 

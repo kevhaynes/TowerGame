@@ -25,6 +25,15 @@ func get_drones() -> Array[CombatDrone]:
 	return _drones
 
 
+## Drones live in the projectile container, so take them with the bay when it
+## is sold.
+func _exit_tree() -> void:
+	for drone: CombatDrone in _drones:
+		if is_instance_valid(drone):
+			drone.queue_free()
+	_drones.clear()
+
+
 func _process(delta: float) -> void:
 	if _drones.is_empty():
 		_deploy_drones()

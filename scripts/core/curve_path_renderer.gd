@@ -2,7 +2,10 @@
 extends Path2D
 class_name CurvePathRenderer
 
-@export var line_color: Color = Color.WHITE
+@export var line_color: Color = Color.WHITE:
+	set(value):
+		line_color = value
+		queue_redraw()
 @export_range(0.1, 100.0, 0.1) var line_width: float = 1.0
 @export var antialiased: bool = true
 

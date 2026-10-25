@@ -34,3 +34,13 @@ func test_can_afford() -> void:
 	assert_true(wallet.can_afford(150))
 	assert_false(wallet.can_afford(151))
 	assert_false(wallet.can_afford(-1))
+
+
+func test_sell_refund_is_seventy_percent_rounded_to_nearest() -> void:
+	assert_eq(Wallet.sell_refund(100), 70)
+	assert_eq(Wallet.sell_refund(15), 11, "10.5 rounds up")
+	assert_eq(Wallet.sell_refund(12), 8, "8.4 rounds down")
+	assert_eq(Wallet.sell_refund(13), 9, "9.1 rounds down")
+	assert_eq(Wallet.sell_refund(1), 1, "0.7 rounds up")
+	assert_eq(Wallet.sell_refund(0), 0)
+	assert_eq(Wallet.sell_refund(-10), 0, "never negative")

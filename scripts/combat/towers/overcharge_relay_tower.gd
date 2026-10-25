@@ -37,6 +37,14 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 
+## A sold relay stops buffing the towers around it.
+func _exit_tree() -> void:
+	var source_id: int = get_instance_id()
+	for node: Node in get_tree().get_nodes_in_group(TOWER_GROUP):
+		if node is BaseTower:
+			(node as BaseTower).clear_buff(source_id)
+
+
 func update_buffs() -> void:
 	var source_id: int = get_instance_id()
 	for node: Node in get_tree().get_nodes_in_group(TOWER_GROUP):

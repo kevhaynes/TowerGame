@@ -14,6 +14,9 @@ const CREDITS_TEXT: String = "%d CR"
 const HEALTH_TEXT: String = "%d / %d HP"
 ## The tower shown on a build pad while waiting for the second tap to build it.
 const BUILD_PREVIEW_MODULATE: Color = Color(1, 1, 1, 0.5)
+## Meta key on a built tower holding the credits paid for it, which its sell
+## refund is based on.
+const PURCHASE_COST_META: StringName = &"purchase_cost"
 
 @onready var level_path: Path2D = $Path
 @onready var projectile_container: Node2D = $ProjectileContainer
@@ -35,10 +38,12 @@ var _research_tree: ResearchTree
 var _path_curve: Curve2D
 var _selected_build_pad: BuildPad
 var _build_menu: BuildMenu
+## Opens when a built tower is tapped, to sell it.
+var _tower_panel: TowerPanel
 var _build_preview: Sprite2D
 ## Shared by the build preview and by tapping a built tower.
 var _range_indicator: RangeIndicator
-## The pad whose built tower's range is showing, or null.
+## The pad whose built tower's range and panel are showing, or null.
 var _range_shown_pad: BuildPad
 ## Built towers by the BuildPad they stand on.
 var _towers_by_pad: Dictionary = {}
@@ -90,6 +95,11 @@ func _ready() -> void:
 	_build_menu.tower_selected.connect(_on_tower_selected)
 	_build_menu.tower_previewed.connect(_on_tower_previewed)
 	_build_menu.closed.connect(_hide_range_and_preview)
+	_tower_panel = TowerPanel.new()
+	_tower_panel.name = "TowerPanel"
+	add_child(_tower_panel)
+	_tower_panel.sell_requested.connect(_on_sell_requested)
+	_tower_panel.closed.connect(_hide_range_and_preview)
 	_create_build_preview()
 
 	_result_panel = LevelResultPanel.new()
@@ -151,6 +161,7 @@ func _finish_level() -> void:
 	_is_finished = true
 	pause_button.disabled = true
 	_build_menu.close()
+	_tower_panel.close()
 
 
 func _connect_build_pads() -> void:
@@ -277,8 +288,9 @@ func _go_to_level_select() -> void:
 
 func _on_build_pad_selected(pad: BuildPad) -> void:
 	if pad.is_occupied:
-		_toggle_tower_range(pad)
+		_toggle_tower_panel(pad)
 		return
+	_tower_panel.close()
 	_hide_range_and_preview()
 	_selected_build_pad = pad
 	_build_menu.show_for_pad(_get_unlocked_tower_definitions(), _wallet.credits)
@@ -326,6 +338,7 @@ func _on_tower_selected(definition_path: String) -> void:
 	tower.set_script(ResourceLoader.load(behaviour_path) as Script)
 	tower.texture = sprite_resource as Texture2D
 	tower.set_meta("definition", definition)
+	tower.set_meta(PURCHASE_COST_META, cost)
 	var behaviour := tower as BaseTower
 	if behaviour == null:
 		push_error("Tower behaviour script does not extend BaseTower: %s" % behaviour_path)
@@ -376,15 +389,42 @@ func _on_tower_previewed(definition_path: String) -> void:
 	_show_range(definition, _selected_build_pad.global_position)
 
 
-## Tapping a built tower shows its range; tapping it again hides it.
-func _toggle_tower_range(pad: BuildPad) -> void:
-	var was_shown: bool = _range_shown_pad == pad and _range_indicator.visible
+## Tapping a built tower shows its range and its panel; tapping it again
+## hides them.
+func _toggle_tower_panel(pad: BuildPad) -> void:
+	var was_shown: bool = _range_shown_pad == pad and _tower_panel.visible
 	_build_menu.close()
+	_tower_panel.close()
 	if was_shown or not _towers_by_pad.has(pad):
 		return
 	var tower: Node2D = _towers_by_pad[pad]
-	_show_range(tower.get_meta("definition") as Dictionary, tower.global_position)
+	var definition: Dictionary = tower.get_meta("definition")
+	_show_range(definition, tower.global_position)
 	_range_shown_pad = pad
+	_tower_panel.show_for_tower(
+		str(definition["display_name"]),
+		Wallet.sell_refund(int(tower.get_meta(PURCHASE_COST_META, 0)))
+	)
+
+
+func _on_sell_requested() -> void:
+	if _range_shown_pad != null and is_instance_valid(_range_shown_pad):
+		sell_tower(_range_shown_pad)
+
+
+## Sells the tower on [param pad]: pays Wallet.sell_refund of its price back
+## into this level's wallet and frees the pad for another tower.
+func sell_tower(pad: BuildPad) -> void:
+	if _is_finished or not _towers_by_pad.has(pad):
+		return
+	var tower: Node2D = _towers_by_pad[pad]
+	_towers_by_pad.erase(pad)
+	_wallet.earn(Wallet.sell_refund(int(tower.get_meta(PURCHASE_COST_META, 0))))
+	# Gone at once, so it stops acting (and cleans up its drones or buffs) this
+	# frame. In-flight projectiles check their impact callback is still valid.
+	towers_container.remove_child(tower)
+	tower.free()
+	pad.set_vacant()
 
 
 func _show_range(definition: Dictionary, at: Vector2) -> void:

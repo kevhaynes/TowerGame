@@ -21,7 +21,13 @@ func after_each() -> void:
 	_save_state.restore()
 
 
-func _load_level(size: Vector2i = LevelLayout.DEFAULT_LEVEL_SIZE) -> Node:
+## A level exactly one screen in size (the smallest allowed), which levels may
+## set even though the default is larger.
+func _one_screen() -> Vector2i:
+	return Vector2i(LevelLayout.viewport_size())
+
+
+func _load_level(size: Vector2i) -> Node:
 	var definition: Dictionary = LevelCatalog.load_levels()[0]
 	var level: Node = load(str(definition["scene"])).instantiate()
 	level.set("level_size", size)
@@ -67,11 +73,11 @@ func _menu(level: Node) -> BuildMenu:
 	return level.get("_build_menu") as BuildMenu
 
 
-func test_default_level_fills_the_screen_and_cannot_scroll() -> void:
-	var level: Node = _load_level()
+func test_one_screen_level_fills_the_screen_and_cannot_scroll() -> void:
+	var level: Node = _load_level(_one_screen())
 	var camera: LevelCamera = _camera(level)
 	var centre: Vector2 = LevelCamera.clamp_centre(
-		Vector2.ZERO, camera.get_view_size(), Vector2(LevelLayout.DEFAULT_LEVEL_SIZE)
+		Vector2.ZERO, camera.get_view_size(), Vector2(_one_screen())
 	)
 	assert_eq(camera.position, centre)
 	camera.pan_by(Vector2(-500, -500))
@@ -182,7 +188,7 @@ func test_mouse_wheel_zooms_a_level() -> void:
 
 
 func test_one_screen_level_cannot_zoom_out() -> void:
-	var level: Node = _load_level()
+	var level: Node = _load_level(_one_screen())
 	var camera: LevelCamera = _camera(level)
 	camera.zoom_at(0.5, Vector2(960, 540))
 	assert_eq(camera.get_zoom_level(), 1.0)

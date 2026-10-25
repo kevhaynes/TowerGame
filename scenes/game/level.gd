@@ -5,9 +5,14 @@ extends Node2D
 ## BuildPad instances under "BuildPads". Name, order, starting credits, health and enemy waves
 ## come from the data/levels JSON whose "scene" points at the level scene.
 
-const PLAY_TEXT: String = "PLAY"
-const PAUSE_TEXT: String = "PAUSE"
-const PAUSED_AT_START_TEXT: String = "PAUSED - SURVEY THE MAP, THEN PRESS PLAY"
+## Speed button labels: the button shows the current speed.
+const PAUSED_SPEED_TEXT: String = "PAUSED"
+const NORMAL_SPEED_TEXT: String = "1X"
+const FAST_SPEED_TEXT: String = "2X"
+## Engine.time_scale at each speed.
+const NORMAL_TIME_SCALE: float = 1.0
+const FAST_TIME_SCALE: float = 2.0
+const PAUSED_AT_START_TEXT: String = "SURVEY THE BATTLEFIELD"
 const PAUSED_TEXT: String = "PAUSED"
 const WAVE_TEXT: String = "WAVE %d / %d"
 const CREDITS_TEXT: String = "%d CR"
@@ -64,13 +69,16 @@ var _spawned_count: int = 0
 ## loads, so nothing carries over to the next level.
 var _wallet: Wallet
 var _is_paused: bool = false
+var _is_fast: bool = false
+## Which way the speed button goes from 1x: up to 2x, or down to paused.
+var _is_speeding_up: bool = true
 var _has_started: bool = false
 var _is_finished: bool = false
 
 
 func _ready() -> void:
 	levels_button.pressed.connect(_go_to_level_select)
-	pause_button.pressed.connect(toggle_pause)
+	pause_button.pressed.connect(cycle_speed)
 	_outcome.health_changed.connect(_on_health_changed)
 	# Levels open paused so the player can survey the map and build first.
 	set_paused(true)
@@ -102,7 +110,7 @@ func _ready() -> void:
 	add_child(_build_menu)
 	_build_menu.tower_selected.connect(_on_tower_selected)
 	_build_menu.tower_previewed.connect(_on_tower_previewed)
-	_build_menu.closed.connect(_hide_range_and_preview)
+	_build_menu.closed.connect(_on_build_menu_closed)
 	_tower_panel = TowerPanel.new()
 	_tower_panel.name = "TowerPanel"
 	add_child(_tower_panel)
@@ -144,24 +152,53 @@ func is_paused() -> bool:
 	return _is_paused
 
 
-func toggle_pause() -> void:
-	set_paused(not _is_paused)
+func _exit_tree() -> void:
+	# time_scale is global; don't leave the next scene running at 2x.
+	Engine.time_scale = NORMAL_TIME_SCALE
+
+
+func is_fast() -> bool:
+	return _is_fast
+
+
+## The speed button: Pause > 1x > 2x > 1x > Pause.
+func cycle_speed() -> void:
+	if _is_paused:
+		set_paused(false)
+	elif _is_fast:
+		_is_speeding_up = false
+		_set_fast(false)
+	elif _is_speeding_up:
+		_set_fast(true)
+	else:
+		set_paused(true)
 
 
 ## Freezes or resumes the level world (enemies, towers, projectiles and
 ## effects). The HUD, build menu and build pads keep working while paused, so
-## towers can be placed; they start acting when play resumes.
+## towers can be placed; they start acting when play resumes. Both pausing and
+## resuming return to 1x, and resuming heads up to 2x on the next press.
 func set_paused(paused: bool) -> void:
 	if _is_finished:
 		return
 	_is_paused = paused
+	_is_speeding_up = true
 	_has_started = _has_started or not paused
 	var mode: ProcessMode = PROCESS_MODE_DISABLED if paused else PROCESS_MODE_INHERIT
 	for container: Node in [enemies_container, towers_container, projectile_container]:
 		container.process_mode = mode
-	pause_button.text = PLAY_TEXT if paused else PAUSE_TEXT
 	pause_banner.visible = paused
 	pause_banner.text = PAUSED_TEXT if _has_started else PAUSED_AT_START_TEXT
+	_set_fast(false)
+
+
+func _set_fast(fast: bool) -> void:
+	_is_fast = fast
+	Engine.time_scale = FAST_TIME_SCALE if fast else NORMAL_TIME_SCALE
+	if _is_paused:
+		pause_button.text = PAUSED_SPEED_TEXT
+	else:
+		pause_button.text = FAST_SPEED_TEXT if fast else NORMAL_SPEED_TEXT
 
 
 func _finish_level() -> void:
@@ -300,8 +337,20 @@ func _on_build_pad_selected(pad: BuildPad) -> void:
 		return
 	_tower_panel.close()
 	_hide_range_and_preview()
+	_unhighlight_selected_build_pad()
 	_selected_build_pad = pad
+	pad.set_highlighted(true)
 	_build_menu.show_for_pad(_get_unlocked_tower_definitions(), _wallet.credits)
+
+
+func _on_build_menu_closed() -> void:
+	_hide_range_and_preview()
+	_unhighlight_selected_build_pad()
+
+
+func _unhighlight_selected_build_pad() -> void:
+	if _selected_build_pad != null and is_instance_valid(_selected_build_pad):
+		_selected_build_pad.set_highlighted(false)
 
 
 ## Towers the player has researched (or started with), in file order.

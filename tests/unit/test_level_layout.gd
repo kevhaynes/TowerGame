@@ -2,6 +2,7 @@ extends GutTest
 
 const STRAIGHT_PATH: PackedVector2Array = [Vector2(100, 300), Vector2(1100, 300)]
 const LARGE_LEVEL: Vector2 = Vector2(3840, 2160)
+const BASE_LEVEL_SCENE: String = "res://scenes/game/level.tscn"
 
 
 func _screen() -> Vector2:
@@ -57,10 +58,33 @@ func test_level_size_fills_the_screen_and_respects_the_maximum() -> void:
 	assert_eq(LevelLayout.level_size_problems(too_tall).size(), 1)
 
 
+func test_default_level_size_is_valid() -> void:
+	var default_size := Vector2(LevelLayout.DEFAULT_LEVEL_SIZE)
+	assert_eq(LevelLayout.level_size_problems(default_size).size(), 0)
+
+
+func test_level_without_its_own_size_uses_the_default() -> void:
+	var root: Node = (load(BASE_LEVEL_SCENE) as PackedScene).instantiate()
+	assert_eq(LevelLayout.level_size_of(root), Vector2(LevelLayout.DEFAULT_LEVEL_SIZE))
+	root.free()
+
+
+## Levels may set a size other than the default (smaller ones included); each
+## must be read back as the size it sets, and be valid.
+func test_each_level_uses_the_size_it_sets() -> void:
+	for definition: Dictionary in LevelCatalog.load_levels():
+		var root: Node = (load(str(definition["scene"])) as PackedScene).instantiate()
+		var own_size := Vector2(root.get("level_size") as Vector2i)
+		assert_eq(LevelLayout.level_size_of(root), own_size, str(definition["id"]))
+		assert_eq(
+			LevelLayout.level_size_problems(own_size).size(), 0, "%s size" % definition["id"]
+		)
+		root.free()
+
+
 func test_level_size_is_read_from_the_level_root() -> void:
 	var scene: PackedScene = load(str(LevelCatalog.load_levels()[0]["scene"]))
 	var root: Node = scene.instantiate()
-	assert_eq(LevelLayout.level_size_of(root), Vector2(LevelLayout.DEFAULT_LEVEL_SIZE))
 	root.set("level_size", Vector2i(2880, 1620))
 	assert_eq(LevelLayout.level_size_of(root), Vector2(2880, 1620))
 	root.free()

@@ -39,7 +39,7 @@ offset_left = 240
 offset_top = 30
 offset_right = 420
 offset_bottom = 108
-text = "PLAY"
+text = "PAUSED"
 
 [node name="CreditsLabel" type="Label" parent="Hud"]
 offset_left = 450

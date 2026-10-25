@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "wasp",
+  "display_name": "Wasp",
+  "description": "A fast airborne gunship that skims over the battlefield in loose flights.",
+  "sprite": "res://assets/sprites/placeholder_enemy_wasp.svg",
+  "stats": {
+    "health": 70,
+    "move_speed": 125,
+    "armour": 0,
+    "shield": 0,
+    "bounty": 20,
+    "base_damage": 1
+  },
+  "traits": [
+    "FLYING"
+  ]
+}

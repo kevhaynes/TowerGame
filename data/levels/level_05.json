@@ -1,0 +1,87 @@
+{
+  "schema_version": 6,
+  "id": "level_05",
+  "display_name": "Level 5",
+  "order": 5,
+  "scene": "res://scenes/levels/level_05.tscn",
+  "starting_credits": 300,
+  "health": 10,
+  "waves": [
+    {
+      "spawns": [
+        {
+          "enemy": "skitter",
+          "count": 15,
+          "spawn_delay": 0,
+          "spawn_interval": 0.25
+        },
+        {
+          "enemy": "aegis",
+          "count": 1,
+          "spawn_delay": 3,
+          "spawn_interval": 0
+        }
+      ]
+    },
+    {
+      "spawns": [
+        {
+          "enemy": "brute",
+          "count": 3,
+          "spawn_delay": 0,
+          "spawn_interval": 2.5
+        },
+        {
+          "enemy": "wasp",
+          "count": 6,
+          "spawn_delay": 2,
+          "spawn_interval": 0.8
+        }
+      ]
+    },
+    {
+      "spawns": [
+        {
+          "enemy": "aegis",
+          "count": 3,
+          "spawn_delay": 0,
+          "spawn_interval": 3
+        },
+        {
+          "enemy": "skitter",
+          "count": 20,
+          "spawn_delay": 2,
+          "spawn_interval": 0.2
+        },
+        {
+          "enemy": "heavy",
+          "count": 3,
+          "spawn_delay": 2,
+          "spawn_interval": 2
+        }
+      ]
+    },
+    {
+      "spawns": [
+        {
+          "enemy": "wasp",
+          "count": 8,
+          "spawn_delay": 0,
+          "spawn_interval": 0.6
+        },
+        {
+          "enemy": "brute",
+          "count": 4,
+          "spawn_delay": 2,
+          "spawn_interval": 2
+        },
+        {
+          "enemy": "aegis",
+          "count": 2,
+          "spawn_delay": 2,
+          "spawn_interval": 3
+        }
+      ]
+    }
+  ]
+}

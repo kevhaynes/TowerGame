@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "chrono_stasis_field",
+  "display_name": "Chrono Stasis Field",
+  "description": "Freezes enemies in time; damage dealt meanwhile lands all at once.",
+  "sprite": "res://assets/sprites/placeholder_chrono_stasis_field.svg",
+  "behaviour": "res://scripts/combat/towers/chrono_stasis_field_tower.gd",
+  "strong_against_trait": [],
+  "weak_against_trait": [],
+  "stats": {
+    "cost": 230,
+    "fire_rate": 0.125,
+    "range": 255.0,
+    "stasis_duration": 3.0,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

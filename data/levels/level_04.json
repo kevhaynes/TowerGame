@@ -1,0 +1,65 @@
+{
+  "schema_version": 6,
+  "id": "level_04",
+  "display_name": "Level 4",
+  "order": 4,
+  "scene": "res://scenes/levels/level_04.tscn",
+  "starting_credits": 300,
+  "health": 10,
+  "waves": [
+	{
+	  "spawns": [
+		{
+		  "enemy": "scout",
+		  "count": 5,
+		  "spawn_delay": 0,
+		  "spawn_interval": 1
+		},
+		{
+		  "enemy": "wasp",
+		  "count": 4,
+		  "spawn_delay": 3,
+		  "spawn_interval": 1.2
+		}
+	  ]
+	},
+	{
+	  "spawns": [
+		{
+		  "enemy": "brute",
+		  "count": 2,
+		  "spawn_delay": 0,
+		  "spawn_interval": 3
+		},
+		{
+		  "enemy": "skitter",
+		  "count": 12,
+		  "spawn_delay": 2,
+		  "spawn_interval": 0.3
+		}
+	  ]
+	},
+	{
+	  "spawns": [
+		{
+		  "enemy": "wasp",
+		  "count": 6,
+		  "spawn_delay": 0,
+		  "spawn_interval": 0.8
+		},
+		{
+		  "enemy": "brute",
+		  "count": 3,
+		  "spawn_delay": 3,
+		  "spawn_interval": 2.5
+		},
+		{
+		  "enemy": "heavy",
+		  "count": 2,
+		  "spawn_delay": 2,
+		  "spawn_interval": 2
+		}
+	  ]
+	}
+  ]
+}

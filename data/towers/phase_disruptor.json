@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "phase_disruptor",
+  "display_name": "Phase Disruptor",
+  "description": "Phases enemies so they take extra damage but ignore slows.",
+  "sprite": "res://assets/sprites/placeholder_phase_disruptor.svg",
+  "behaviour": "res://scripts/combat/towers/phase_disruptor_tower.gd",
+  "strong_against_trait": [
+    "SHIELDED"
+  ],
+  "weak_against_trait": [],
+  "stats": {
+    "cost": 170,
+    "damage": 10.0,
+    "fire_rate": 1.2,
+    "range": 330.0,
+    "phase_duration": 4.0,
+    "phased_damage_bonus": 0.35,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "mass_driver",
+  "display_name": "Mass Driver",
+  "description": "A heavy magnetic accelerator that hits one target very hard.",
+  "sprite": "res://assets/sprites/placeholder_mass_driver.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_slug.svg",
+  "behaviour": "res://scripts/combat/towers/mass_driver_tower.gd",
+  "strong_against_trait": [
+    "ARMOURED",
+    "BOSS"
+  ],
+  "weak_against_trait": [
+    "FLYING"
+  ],
+  "stats": {
+    "cost": 180,
+    "damage_per_shot": 70.0,
+    "fire_rate": 0.4,
+    "range": 420.0,
+    "projectile_speed": 1350.0,
+    "damage_type": "KINETIC",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

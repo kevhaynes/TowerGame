@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dlhxj3eeob8r5"]
+
+[ext_resource type="PackedScene" path="res://scenes/game/level.tscn" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/game/build_pad.tscn" id="2_build_pad"]
+
+[sub_resource type="Curve2D" id="Curve2D_path"]
+bake_interval = 4.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 60, 540, 0, 0, 0, 0, 107, 149, 0, 0, 0, 0, 124, 511, 0, 0, 0, 0, 155, 148, 0, 0, 0, 0, 182, 526, 0, 0, 0, 0, 195, 146, 0, 0, 0, 0, 224, 533, -66.25639, 14.290595, 66.25639, -14.290595, 525, 587, 193.57262, 127.31621, -193.57262, -127.31621, 621, 324, -45.470074, -70.15383, 45.470074, 70.15383, 415, 509, -177.98286, -11.692305, 177.98286, 11.692305, 794, 730, 15.58974, 145.50424, -15.58974, -145.50424, 1232, 595, -196.1709, 211.76064, 196.1709, -211.76064, 1038, 209, 0, 0, 0, 0, 1802, 982)
+}
+point_count = 14
+
+[node name="Level03" unique_id=1543580468 instance=ExtResource("1_level")]
+
+[node name="Ground" parent="." index="0"]
+position = Vector2(4, -54)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 190, 1079, 0, 1080)
+
+[node name="Path" parent="." index="6"]
+curve = SubResource("Curve2D_path")
+
+[node name="BuildPad1" parent="BuildPads" index="0" unique_id=1358412984 instance=ExtResource("2_build_pad")]
+position = Vector2(535, 437)
+
+[node name="BuildPad3" parent="BuildPads" index="1" unique_id=1900517224 instance=ExtResource("2_build_pad")]
+position = Vector2(871, 530)
+
+[node name="BuildPad4" parent="BuildPads" index="2" unique_id=1248459489 instance=ExtResource("2_build_pad")]
+position = Vector2(154, 760)
+
+[node name="BuildPad5" parent="BuildPads" index="3" unique_id=612221222 instance=ExtResource("2_build_pad")]
+position = Vector2(345, 205)
+
+[node name="BuildPad6" parent="BuildPads" index="4" unique_id=1628071200 instance=ExtResource("2_build_pad")]
+position = Vector2(778, 166)
+
+[node name="BuildPad7" parent="BuildPads" index="5" unique_id=1418827076 instance=ExtResource("2_build_pad")]
+position = Vector2(1760, 451)
+
+[node name="BuildPad8" parent="BuildPads" index="6" unique_id=1339339685 instance=ExtResource("2_build_pad")]
+position = Vector2(1508, 265)
+
+[node name="BuildPad9" parent="BuildPads" index="7" unique_id=1942242346 instance=ExtResource("2_build_pad")]
+position = Vector2(1408, 688)
+
+[node name="BuildPad2" parent="BuildPads" index="8" unique_id=1946256181 instance=ExtResource("2_build_pad")]
+position = Vector2(1121, 319)
+
+[node name="LevelsButton" parent="Hud" index="0"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 210.0
+offset_bottom = 108.0
+
+[node name="PauseButton" parent="Hud" index="1"]
+offset_left = 240.0
+offset_top = 30.0
+offset_right = 420.0
+offset_bottom = 108.0
+
+[node name="CreditsLabel" parent="Hud" index="2"]
+offset_left = 450.0
+offset_top = 30.0
+offset_right = 690.0
+offset_bottom = 108.0
+
+[node name="HealthLabel" parent="Hud" index="3"]
+offset_left = 450.0
+offset_top = 108.0
+offset_right = 690.0
+offset_bottom = 156.0
+
+[node name="WaveLabel" parent="Hud" index="4"]
+offset_top = 96.0
+offset_bottom = 132.0
+
+[node name="PauseBanner" parent="Hud" index="5"]
+offset_left = -14.0
+offset_top = 123.0
+offset_right = -14.0
+offset_bottom = 171.0
+
+[node name="LevelTitle" parent="Hud" index="6"]
+offset_top = 42.0
+offset_bottom = 96.0

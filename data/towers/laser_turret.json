@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "laser_turret",
+  "display_name": "Laser Turret",
+  "description": "A continuous energy beam whose damage ramps up while it stays on the same target.",
+  "sprite": "res://assets/sprites/placeholder_laser_turret.svg",
+  "behaviour": "res://scripts/combat/towers/laser_turret_tower.gd",
+  "strong_against_trait": [
+    "ARMOURED"
+  ],
+  "weak_against_trait": [
+    "SHIELDED"
+  ],
+  "stats": {
+    "cost": 150,
+    "base_dps": 10.0,
+    "ramp_rate": 0.5,
+    "max_ramp_multiplier": 3.0,
+    "range": 300.0,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "heavy",
+  "display_name": "Heavy",
+  "description": "A slow, armoured assault unit.",
+  "sprite": "res://assets/sprites/placeholder_enemy_heavy.svg",
+  "stats": {
+	"health": 160,
+	"move_speed": 82.5,
+	"armour": 3,
+	"shield": 0,
+	"bounty": 35,
+	"base_damage": 2
+  },
+  "traits": [
+	"MECHANICAL",
+    "ARMOURED"
+  ]
+}

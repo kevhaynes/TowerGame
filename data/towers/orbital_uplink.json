@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "orbital_uplink",
+  "display_name": "Orbital Uplink",
+  "description": "Paints a target and calls down a delayed kinetic strike from orbit.",
+  "sprite": "res://assets/sprites/placeholder_orbital_uplink.svg",
+  "behaviour": "res://scripts/combat/towers/orbital_uplink_tower.gd",
+  "strong_against_trait": [
+    "ARMOURED"
+  ],
+  "weak_against_trait": [
+    "FLYING"
+  ],
+  "stats": {
+    "cost": 250,
+    "damage": 120.0,
+    "fire_rate": 0.2,
+    "range": 480.0,
+    "strike_delay": 1.5,
+    "strike_radius": 135.0,
+    "splash_edge_factor": 0.7,
+    "damage_type": "KINETIC",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

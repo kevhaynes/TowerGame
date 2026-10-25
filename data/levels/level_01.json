@@ -1,0 +1,39 @@
+{
+  "schema_version": 6,
+  "id": "level_01",
+  "display_name": "Level 1",
+  "order": 1,
+  "scene": "res://scenes/levels/level_01.tscn",
+  "starting_credits": 300,
+  "health": 10,
+  "waves": [
+	{
+	  "spawns": [
+		{
+		  "enemy": "scout",
+		  "count": 6,
+		  "spawn_delay": 0,
+		  "spawn_interval": 1
+		},
+		{
+		  "enemy": "heavy",
+		  "count": 6,
+		  "spawn_delay": 1.5,
+		  "spawn_interval": 1.5
+		},
+		{
+		  "enemy": "scout",
+		  "count": 10,
+		  "spawn_delay": 3,
+		  "spawn_interval": 0.3
+		},
+		{
+		  "enemy": "heavy",
+		  "count": 10,
+		  "spawn_delay": 3,
+		  "spawn_interval": 2
+		}
+	  ]
+	}
+  ]
+}

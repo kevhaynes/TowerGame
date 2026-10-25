@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "railgun_emplacement",
+  "display_name": "Railgun Emplacement",
+  "description": "A slow hypervelocity slug that pierces every enemy in a straight line.",
+  "sprite": "res://assets/sprites/placeholder_railgun_emplacement.svg",
+  "behaviour": "res://scripts/combat/towers/railgun_emplacement_tower.gd",
+  "strong_against_trait": [
+    "ARMOURED"
+  ],
+  "weak_against_trait": [],
+  "stats": {
+    "cost": 220,
+    "damage": 90.0,
+    "fire_rate": 0.3,
+    "range": 570.0,
+    "line_half_width": 21.0,
+    "damage_type": "KINETIC",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

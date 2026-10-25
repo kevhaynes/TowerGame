@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "aegis",
+  "display_name": "Aegis Walker",
+  "description": "An armoured walker behind an energy shield that soaks damage before its plating.",
+  "sprite": "res://assets/sprites/placeholder_enemy_aegis.svg",
+  "stats": {
+    "health": 150,
+    "move_speed": 75,
+    "armour": 3,
+    "shield": 100,
+    "bounty": 55,
+    "base_damage": 2
+  },
+  "traits": [
+    "SHIELDED",
+    "ARMOURED"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "drone_bay",
+  "display_name": "Drone Bay",
+  "description": "Deploys combat drones that patrol a zone and engage independently.",
+  "sprite": "res://assets/sprites/placeholder_drone_bay.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_drone.svg",
+  "behaviour": "res://scripts/combat/towers/drone_bay_tower.gd",
+  "strong_against_trait": [
+    "ORGANIC"
+  ],
+  "weak_against_trait": [
+    "ARMOURED"
+  ],
+  "stats": {
+    "cost": 220,
+    "range": 210.0,
+    "drone_count": 2,
+    "drone_damage": 5.0,
+    "drone_fire_rate": 2.5,
+    "drone_range": 180.0,
+    "drone_speed": 240.0,
+    "damage_type": "KINETIC",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "boson_bomb",
+  "display_name": "Boson Bomb",
+  "description": "Bombs that increase enemy mass, slowing them and crushing them over time.",
+  "sprite": "res://assets/sprites/placeholder_boson_bomb.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_boson_shell.svg",
+  "behaviour": "res://scripts/combat/towers/boson_bomb_tower.gd",
+  "strong_against_trait": [
+    "BOSS"
+  ],
+  "weak_against_trait": [],
+  "stats": {
+    "cost": 170,
+    "damage": 8.0,
+    "fire_rate": 0.5,
+    "range": 300.0,
+    "projectile_speed": 450.0,
+    "splash_radius": 90.0,
+    "splash_edge_factor": 1.0,
+    "mass_slow": 0.4,
+    "mass_dps": 6.0,
+    "mass_duration": 3.0,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

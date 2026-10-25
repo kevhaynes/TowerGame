@@ -1,0 +1,49 @@
+{
+  "schema_version": 6,
+  "id": "level_03",
+  "display_name": "Level 3",
+  "order": 3,
+  "scene": "res://scenes/levels/level_03.tscn",
+  "starting_credits": 300,
+  "health": 10,
+  "waves": [
+	{
+	  "spawns": [
+		{
+		  "enemy": "scout",
+		  "count": 4,
+		  "spawn_delay": 0,
+		  "spawn_interval": 1.2
+		},
+		{
+		  "enemy": "skitter",
+		  "count": 10,
+		  "spawn_delay": 3,
+		  "spawn_interval": 0.2
+		}
+	  ]
+	},
+	{
+	  "spawns": [
+		{
+		  "enemy": "heavy",
+		  "count": 2,
+		  "spawn_delay": 0,
+		  "spawn_interval": 2
+		},
+		{
+		  "enemy": "skitter",
+		  "count": 15,
+		  "spawn_delay": 2,
+		  "spawn_interval": 0.25
+		},
+		{
+		  "enemy": "scout",
+		  "count": 4,
+		  "spawn_delay": 2,
+		  "spawn_interval": 1
+		}
+	  ]
+	}
+  ]
+}

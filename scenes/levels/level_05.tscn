@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/game/level.tscn" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/game/build_pad.tscn" id="2_build_pad"]
+
+[sub_resource type="Curve2D" id="Curve2D_path"]
+bake_interval = 4.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 60, 540, 0, 0, 0, 0, 1860, 540)
+}
+point_count = 2
+
+[node name="Level05" instance=ExtResource("1_level")]
+
+[node name="Path" parent="." index="6"]
+curve = SubResource("Curve2D_path")
+
+[node name="BuildPad1" parent="BuildPads" instance=ExtResource("2_build_pad")]
+position = Vector2(960, 360)

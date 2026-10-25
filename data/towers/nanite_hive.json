@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "nanite_hive",
+  "display_name": "Nanite Hive",
+  "description": "Nanobot clouds that eat armour, deal damage over time and spread.",
+  "sprite": "res://assets/sprites/placeholder_nanite_hive.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_nanite_cloud.svg",
+  "behaviour": "res://scripts/combat/towers/nanite_hive_tower.gd",
+  "strong_against_trait": [
+    "MECHANICAL"
+  ],
+  "weak_against_trait": [
+    "ORGANIC"
+  ],
+  "stats": {
+    "cost": 170,
+    "fire_rate": 0.5,
+    "range": 300.0,
+    "projectile_speed": 390.0,
+    "dot_dps": 5.0,
+    "dot_duration": 4.0,
+    "shred_per_application": 1.0,
+    "shred_max": 3.0,
+    "shred_duration": 6.0,
+    "spread_radius": 120.0,
+    "spread_generations": 2,
+    "spread_interval": 1.0,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

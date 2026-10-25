@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://danr8xrjnycde"]
+
+[ext_resource type="PackedScene" path="res://scenes/game/level.tscn" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/game/build_pad.tscn" id="2_build_pad"]
+
+[sub_resource type="Curve2D" id="Curve2D_path"]
+bake_interval = 4.0
+_data = {
+"points": PackedVector2Array(-110.99999, 22.499998, 110.99999, -22.499998, -18, 842, -77.99999, -2.9999998, 77.99999, 2.9999998, 510, 874, 10.499998, 146.99998, -10.499998, -146.99998, 666, 704, 0, 202.49998, 0, -202.49998, 531, 385, -263.99997, 7.4999995, 263.99997, -7.4999995, 780, 104, -187.49997, -28.499998, 187.49997, 28.499998, 1101, 304, -46.499996, -79.49999, 46.499996, 79.49999, 1297.5, 630, -94.49999, -5.9999995, 94.49999, 5.9999995, 1515, 787.5, 0, 0, 0, 0, 1936, 779)
+}
+point_count = 9
+
+[node name="Level02" unique_id=875890434 instance=ExtResource("1_level")]
+
+[node name="Path" parent="." index="6"]
+curve = SubResource("Curve2D_path")
+
+[node name="BuildPad1" parent="BuildPads" index="0" unique_id=439069300 instance=ExtResource("2_build_pad")]
+position = Vector2(540, 690)
+
+[node name="BuildPad2" parent="BuildPads" index="1" unique_id=1500104354 instance=ExtResource("2_build_pad")]
+position = Vector2(1106, 430)
+
+[node name="BuildPad3" parent="BuildPads" index="2" unique_id=1655952628 instance=ExtResource("2_build_pad")]
+position = Vector2(788, 231)
+
+[node name="BuildPad4" parent="BuildPads" index="3" unique_id=1754897509 instance=ExtResource("2_build_pad")]
+position = Vector2(1500, 630)
+
+[node name="BuildPad5" parent="BuildPads" index="4" unique_id=1281806500 instance=ExtResource("2_build_pad")]
+position = Vector2(375, 990)
+
+[node name="LevelsButton" parent="Hud" index="0"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 210.0
+offset_bottom = 108.0
+
+[node name="LevelTitle" parent="Hud" index="1"]
+offset_top = 42.0
+offset_bottom = 96.0

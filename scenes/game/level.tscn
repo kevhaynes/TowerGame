@@ -1,0 +1,147 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/game/level.gd" id="1_level"]
+[ext_resource type="Script" path="res://scripts/core/curve_path_renderer.gd" id="2_curve_renderer"]
+[ext_resource type="Script" path="res://scripts/core/level_path.gd" id="3_level_path"]
+
+[sub_resource type="Curve2D" id="Curve2D_grid_vertical_a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 1080)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_grid_vertical_b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 960, 0, 0, 0, 0, 0, 960, 1080)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_grid_vertical_c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1440, 0, 0, 0, 0, 0, 1440, 1080)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_grid_horizontal_a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 360, 0, 0, 0, 0, 1920, 360)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_grid_horizontal_b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 1920, 720)
+}
+point_count = 2
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_level")
+
+[node name="Ground" type="Polygon2D" parent="."]
+color = Color(0.075, 0.118, 0.137, 1)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
+
+[node name="GridVerticalA" type="Path2D" parent="."]
+curve = SubResource("Curve2D_grid_vertical_a")
+script = ExtResource("2_curve_renderer")
+line_color = Color(0.14, 0.21, 0.22, 0.42)
+
+[node name="GridVerticalB" type="Path2D" parent="."]
+curve = SubResource("Curve2D_grid_vertical_b")
+script = ExtResource("2_curve_renderer")
+line_color = Color(0.14, 0.21, 0.22, 0.42)
+
+[node name="GridVerticalC" type="Path2D" parent="."]
+curve = SubResource("Curve2D_grid_vertical_c")
+script = ExtResource("2_curve_renderer")
+line_color = Color(0.14, 0.21, 0.22, 0.42)
+
+[node name="GridHorizontalA" type="Path2D" parent="."]
+curve = SubResource("Curve2D_grid_horizontal_a")
+script = ExtResource("2_curve_renderer")
+line_color = Color(0.14, 0.21, 0.22, 0.42)
+
+[node name="GridHorizontalB" type="Path2D" parent="."]
+curve = SubResource("Curve2D_grid_horizontal_b")
+script = ExtResource("2_curve_renderer")
+line_color = Color(0.14, 0.21, 0.22, 0.42)
+
+[node name="Path" type="Path2D" parent="."]
+script = ExtResource("3_level_path")
+
+[node name="ProjectileContainer" type="Node2D" parent="."]
+
+[node name="BuildPads" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="LevelsButton" type="Button" parent="Hud"]
+offset_left = 30
+offset_top = 30
+offset_right = 210
+offset_bottom = 108
+text = "LEVELS"
+
+[node name="PauseButton" type="Button" parent="Hud"]
+offset_left = 240
+offset_top = 30
+offset_right = 420
+offset_bottom = 108
+text = "PLAY"
+
+[node name="CreditsLabel" type="Label" parent="Hud"]
+offset_left = 450
+offset_top = 30
+offset_right = 690
+offset_bottom = 108
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.83, 0.42, 1)
+theme_override_font_sizes/font_size = 36
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="Hud"]
+offset_left = 450
+offset_top = 108
+offset_right = 690
+offset_bottom = 156
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.45, 1)
+theme_override_font_sizes/font_size = 30
+vertical_alignment = 1
+
+[node name="WaveLabel" type="Label" parent="Hud"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 96
+offset_bottom = 132
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.78, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+
+[node name="PauseBanner" type="Label" parent="Hud"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 140
+offset_bottom = 188
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.83, 0.42, 1)
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="LevelTitle" type="Label" parent="Hud"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 42
+offset_bottom = 96
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.65, 0.96, 0.82, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1

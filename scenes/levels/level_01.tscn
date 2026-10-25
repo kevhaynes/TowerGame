@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://crq6gkx0vqpxo"]
+
+[ext_resource type="PackedScene" path="res://scenes/game/level.tscn" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/game/build_pad.tscn" id="2_build_pad"]
+
+[sub_resource type="Curve2D" id="Curve2D_path"]
+bake_interval = 4.0
+_data = {
+"points": PackedVector2Array(-443.99997, -1.4999999, 443.99997, 1.4999999, -19, 268, -161.99998, -17.999998, 161.99998, 17.999998, 655, 124, 11.999999, -82.49999, -11.999999, 82.49999, 895, 343, 80.99999, -19.499998, -80.99999, 19.499998, 750, 513, 0, 0, 0, 0, 484, 472, 20.999998, -196.49998, -20.999998, 196.49998, 257, 610, 0, 0, 0, 0, 457, 784, -67.49999, 7.4999995, 67.49999, -7.4999995, 801, 770, -43.499996, 143.99998, 43.499996, -143.99998, 1128, 559, -208.49997, -16.5, 208.49997, 16.5, 1347, 334, -178.49998, -16.499998, 178.49998, 16.499998, 1545, 727.5, 0, 0, 0, 0, 1795, 1093)
+}
+point_count = 12
+
+[node name="Level01" unique_id=1683510074 instance=ExtResource("1_level")]
+
+[node name="Path" parent="." index="6"]
+curve = SubResource("Curve2D_path")
+
+[node name="BuildPad1" parent="BuildPads" index="0" unique_id=2060333575 instance=ExtResource("2_build_pad")]
+position = Vector2(936, 591)
+
+[node name="BuildPad2" parent="BuildPads" index="1" unique_id=774062514 instance=ExtResource("2_build_pad")]
+position = Vector2(761, 311)
+
+[node name="BuildPad3" parent="BuildPads" index="2" unique_id=1430564392 instance=ExtResource("2_build_pad")]
+position = Vector2(1296, 463)
+
+[node name="BuildPad4" parent="BuildPads" index="3" unique_id=1370554643 instance=ExtResource("2_build_pad")]
+position = Vector2(455, 621)
+
+[node name="BuildPad5" parent="BuildPads" index="4" unique_id=509106042 instance=ExtResource("2_build_pad")]
+position = Vector2(97.5, 618)
+
+[node name="BuildPad6" parent="BuildPads" index="5" unique_id=1532210293 instance=ExtResource("2_build_pad")]
+position = Vector2(1291, 625)
+
+[node name="LevelsButton" parent="Hud" index="0"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 210.0
+offset_bottom = 108.0
+
+[node name="PauseButton" parent="Hud" index="1"]
+offset_left = 240.0
+offset_top = 30.0
+offset_right = 420.0
+offset_bottom = 108.0
+
+[node name="CreditsLabel" parent="Hud" index="2"]
+offset_left = 450.0
+offset_top = 30.0
+offset_right = 690.0
+offset_bottom = 108.0
+
+[node name="HealthLabel" parent="Hud" index="3"]
+offset_left = 450.0
+offset_top = 108.0
+offset_right = 690.0
+offset_bottom = 156.0
+
+[node name="WaveLabel" parent="Hud" index="4"]
+offset_top = 96.0
+offset_bottom = 132.0
+
+[node name="PauseBanner" parent="Hud" index="5"]
+offset_top = 140.0
+offset_bottom = 188.0
+
+[node name="LevelTitle" parent="Hud" index="6"]
+offset_top = 42.0
+offset_bottom = 96.0

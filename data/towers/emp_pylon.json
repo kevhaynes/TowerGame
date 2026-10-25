@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "emp_pylon",
+  "display_name": "EMP Pylon",
+  "description": "Periodic pulse that stuns mechanical enemies and strips shields.",
+  "sprite": "res://assets/sprites/placeholder_emp_pylon.svg",
+  "behaviour": "res://scripts/combat/towers/emp_pylon_tower.gd",
+  "strong_against_trait": [
+    "MECHANICAL"
+  ],
+  "weak_against_trait": [
+    "ORGANIC"
+  ],
+  "stats": {
+    "cost": 150,
+    "damage": 5.0,
+    "fire_rate": 0.25,
+    "range": 240.0,
+    "stun_duration": 1.5,
+    "damage_type": "EMP",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

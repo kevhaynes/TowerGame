@@ -1,0 +1,27 @@
+{
+  "schema_version": 6,
+  "id": "level_02",
+  "display_name": "Level 2",
+  "order": 2,
+  "scene": "res://scenes/levels/level_02.tscn",
+  "starting_credits": 300,
+  "health": 10,
+  "waves": [
+    {
+      "spawns": [
+        {
+          "enemy": "scout",
+          "count": 1,
+          "spawn_delay": 0,
+          "spawn_interval": 0
+        },
+        {
+          "enemy": "heavy",
+          "count": 1,
+          "spawn_delay": 1.5,
+          "spawn_interval": 0
+        }
+      ]
+    }
+  ]
+}

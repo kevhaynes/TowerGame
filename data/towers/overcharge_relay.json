@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "id": "overcharge_relay",
+  "display_name": "Overcharge Relay",
+  "description": "Boosts nearby towers' damage and fire rate, then overheats.",
+  "sprite": "res://assets/sprites/placeholder_overcharge_relay.svg",
+  "behaviour": "res://scripts/combat/towers/overcharge_relay_tower.gd",
+  "strong_against_trait": [],
+  "weak_against_trait": [],
+  "stats": {
+    "cost": 180,
+    "range": 195.0,
+    "damage_bonus": 0.25,
+    "fire_rate_bonus": 0.25,
+    "active_duration": 8.0,
+    "cooldown_duration": 4.0,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

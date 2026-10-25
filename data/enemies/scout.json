@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "scout",
+  "display_name": "Scout",
+  "description": "A fast, lightly armoured frontline unit.",
+  "sprite": "res://assets/sprites/placeholder_enemy_scout.svg",
+  "stats": {
+	"health": 55,
+	"move_speed": 142.5,
+	"armour": 0,
+	"shield": 0,
+	"bounty": 15,
+	"base_damage": 1
+  },
+  "traits": [
+    "MECHANICAL"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "swarm_missile_pod",
+  "display_name": "Swarm Missile Pod",
+  "description": "Clusters of micro-missiles that home in on separate targets.",
+  "sprite": "res://assets/sprites/placeholder_swarm_missile_pod.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_missile.svg",
+  "behaviour": "res://scripts/combat/towers/swarm_missile_pod_tower.gd",
+  "strong_against_trait": [
+    "FLYING"
+  ],
+  "weak_against_trait": [
+    "ARMOURED"
+  ],
+  "stats": {
+    "cost": 200,
+    "damage": 12.0,
+    "fire_rate": 0.6,
+    "range": 390.0,
+    "missiles_per_salvo": 4,
+    "projectile_speed": 510.0,
+    "damage_type": "EXPLOSIVE",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

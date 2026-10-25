@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "flame_thrower",
+  "display_name": "Flame Thrower",
+  "description": "Close-range flame cone; strong against organic, weak against mechanical.",
+  "sprite": "res://assets/sprites/placeholder_flame_thrower.svg",
+  "behaviour": "res://scripts/combat/towers/flame_thrower_tower.gd",
+  "strong_against_trait": [
+    "ORGANIC"
+  ],
+  "weak_against_trait": [
+    "MECHANICAL"
+  ],
+  "stats": {
+    "cost": 130,
+    "damage_per_second": 18.0,
+    "range": 180.0,
+    "cone_angle": 40.0,
+    "burn_dps": 4.0,
+    "burn_duration": 2.0,
+    "damage_type": "THERMAL",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

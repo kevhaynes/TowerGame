@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "categories": [
+    {
+      "id": "PHYSICAL",
+      "display_name": "Physical",
+      "description": "Kinetic weapons: bullets, slugs, drones and orbital strikes.",
+      "color": "#d9c27a"
+    },
+    {
+      "id": "EXPLOSIVE",
+      "display_name": "Explosive",
+      "description": "Shells and missiles that splash clustered and airborne enemies.",
+      "color": "#ff8a4c"
+    },
+    {
+      "id": "THERMAL",
+      "display_name": "Thermal",
+      "description": "Fire and plasma that burn organic enemies.",
+      "color": "#ff5e5e"
+    },
+    {
+      "id": "PARTICLE",
+      "display_name": "Particle",
+      "description": "Beams, lightning and phase fields.",
+      "color": "#6fc8ff"
+    },
+    {
+      "id": "STATUS",
+      "display_name": "Status",
+      "description": "Slows, stuns, pulls and freezes that set enemies up for the kill.",
+      "color": "#8ef0c4"
+    },
+    {
+      "id": "SUPPORT",
+      "display_name": "Support",
+      "description": "Barriers and buffs that make other towers better.",
+      "color": "#c79bff"
+    }
+  ],
+  "nodes": [
+    {
+      "tower": "machine_gun",
+      "category": "PHYSICAL",
+      "tier": 0,
+      "cost": 0,
+      "requires": [],
+      "starting": true
+    },
+    {
+      "tower": "mass_driver",
+      "category": "PHYSICAL",
+      "tier": 1,
+      "cost": 1,
+      "requires": ["machine_gun"]
+    },
+    {
+      "tower": "drone_bay",
+      "category": "PHYSICAL",
+      "tier": 2,
+      "cost": 2,
+      "requires": ["mass_driver"]
+    },
+    {
+      "tower": "railgun_emplacement",
+      "category": "PHYSICAL",
+      "tier": 3,
+      "cost": 3,
+      "requires": ["mass_driver"]
+    },
+    {
+      "tower": "orbital_uplink",
+      "category": "PHYSICAL",
+      "tier": 4,
+      "cost": 4,
+      "requires": ["railgun_emplacement"]
+    },
+    {
+      "tower": "flak_battery",
+      "category": "EXPLOSIVE",
+      "tier": 1,
+      "cost": 1,
+      "requires": ["machine_gun"]
+    },
+    {
+      "tower": "swarm_missile_pod",
+      "category": "EXPLOSIVE",
+      "tier": 2,
+      "cost": 2,
+      "requires": ["flak_battery"]
+    },
+    {
+      "tower": "antimatter_mortar",
+      "category": "EXPLOSIVE",
+      "tier": 3,
+      "cost": 3,
+      "requires": ["swarm_missile_pod"]
+    },
+    {
+      "tower": "flame_thrower",
+      "category": "THERMAL",
+      "tier": 1,
+      "cost": 1,
+      "requires": ["machine_gun"]
+    },
+    {
+      "tower": "plasma_cannon",
+      "category": "THERMAL",
+      "tier": 2,
+      "cost": 2,
+      "requires": ["flame_thrower"]
+    },
+    {
+      "tower": "laser_turret",
+      "category": "PARTICLE",
+      "tier": 1,
+      "cost": 1,
+      "requires": ["machine_gun"]
+    },
+    {
+      "tower": "tesla_coil",
+      "category": "PARTICLE",
+      "tier": 2,
+      "cost": 2,
+      "requires": ["laser_turret"]
+    },
+    {
+      "tower": "phase_disruptor",
+      "category": "PARTICLE",
+      "tier": 3,
+      "cost": 3,
+      "requires": ["tesla_coil"]
+    },
+    {
+      "tower": "cryo_projector",
+      "category": "STATUS",
+      "tier": 1,
+      "cost": 1,
+      "requires": ["machine_gun"]
+    },
+    {
+      "tower": "emp_pylon",
+      "category": "STATUS",
+      "tier": 2,
+      "cost": 2,
+      "requires": ["cryo_projector"]
+    },
+    {
+      "tower": "sonic_lance",
+      "category": "STATUS",
+      "tier": 2,
+      "cost": 2,
+      "requires": ["cryo_projector"]
+    },
+    {
+      "tower": "nanite_hive",
+      "category": "STATUS",
+      "tier": 3,
+      "cost": 3,
+      "requires": ["emp_pylon"]
+    },
+    {
+      "tower": "graviton_well",
+      "category": "STATUS",
+      "tier": 3,
+      "cost": 3,
+      "requires": ["sonic_lance"]
+    },
+    {
+      "tower": "boson_bomb",
+      "category": "STATUS",
+      "tier": 4,
+      "cost": 4,
+      "requires": ["graviton_well"]
+    },
+    {
+      "tower": "chrono_stasis_field",
+      "category": "STATUS",
+      "tier": 4,
+      "cost": 4,
+      "requires": ["graviton_well", "phase_disruptor"]
+    },
+    {
+      "tower": "shield_projector",
+      "category": "SUPPORT",
+      "tier": 2,
+      "cost": 2,
+      "requires": ["laser_turret"]
+    },
+    {
+      "tower": "overcharge_relay",
+      "category": "SUPPORT",
+      "tier": 3,
+      "cost": 3,
+      "requires": ["shield_projector", "tesla_coil"]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "cryo_projector",
+  "display_name": "Cryo Projector",
+  "description": "Liquid-nitrogen mist that slows enemies and makes them brittle.",
+  "sprite": "res://assets/sprites/placeholder_cryo_projector.svg",
+  "behaviour": "res://scripts/combat/towers/cryo_projector_tower.gd",
+  "strong_against_trait": [
+    "ORGANIC"
+  ],
+  "weak_against_trait": [
+    "MECHANICAL"
+  ],
+  "stats": {
+    "cost": 120,
+    "damage": 3.0,
+    "fire_rate": 2.0,
+    "range": 225.0,
+    "spray_radius": 75.0,
+    "slow_fraction": 0.5,
+    "slow_duration": 2.0,
+    "brittle_bonus": 0.5,
+    "brittle_duration": 3.0,
+    "damage_type": "CRYO",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

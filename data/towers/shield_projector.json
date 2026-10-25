@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "shield_projector",
+  "display_name": "Shield Projector",
+  "description": "Projects an energy barrier across the road that holds enemies until broken.",
+  "sprite": "res://assets/sprites/placeholder_shield_projector.svg",
+  "behaviour": "res://scripts/combat/towers/shield_projector_tower.gd",
+  "strong_against_trait": [],
+  "weak_against_trait": [],
+  "stats": {
+    "cost": 180,
+    "range": 225.0,
+    "barrier_hp": 120.0,
+    "barrier_drain_per_base_damage": 10.0,
+    "recharge_time": 6.0,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

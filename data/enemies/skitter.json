@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "skitter",
+  "display_name": "Skitter",
+  "description": "A tiny, very fast bio-swarmer. Weak alone, deadly in numbers.",
+  "sprite": "res://assets/sprites/placeholder_enemy_skitter.svg",
+  "stats": {
+    "health": 16,
+    "move_speed": 215,
+    "armour": 0,
+    "shield": 0,
+    "bounty": 4,
+    "base_damage": 1
+  },
+  "traits": [
+    "ORGANIC"
+  ]
+}

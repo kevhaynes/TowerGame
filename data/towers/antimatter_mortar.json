@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "antimatter_mortar",
+  "display_name": "Antimatter Mortar",
+  "description": "Long-range artillery with a huge blast and a minimum-range blind spot.",
+  "sprite": "res://assets/sprites/placeholder_antimatter_mortar.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_mortar_shell.svg",
+  "behaviour": "res://scripts/combat/towers/antimatter_mortar_tower.gd",
+  "strong_against_trait": [
+    "ARMOURED"
+  ],
+  "weak_against_trait": [
+    "FLYING"
+  ],
+  "stats": {
+    "cost": 260,
+    "damage": 150.0,
+    "fire_rate": 0.15,
+    "range": 675.0,
+    "min_range": 210.0,
+    "splash_radius": 165.0,
+    "splash_edge_factor": 0.4,
+    "shell_flight_time": 1.5,
+    "damage_type": "EXPLOSIVE",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

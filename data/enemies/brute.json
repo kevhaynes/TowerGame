@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "brute",
+  "display_name": "Brute",
+  "description": "A hulking bio-engineered beast whose hide turns aside light rounds.",
+  "sprite": "res://assets/sprites/placeholder_enemy_brute.svg",
+  "stats": {
+    "health": 240,
+    "move_speed": 70,
+    "armour": 2,
+    "shield": 0,
+    "bounty": 45,
+    "base_damage": 2
+  },
+  "traits": [
+    "ORGANIC",
+    "ARMOURED"
+  ]
+}

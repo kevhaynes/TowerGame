@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "flak_battery",
+  "display_name": "Flak Battery",
+  "description": "Bursting proximity shells that shred clustered or airborne enemies.",
+  "sprite": "res://assets/sprites/placeholder_flak_battery.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_flak_shell.svg",
+  "behaviour": "res://scripts/combat/towers/splash_shell_tower.gd",
+  "strong_against_trait": [
+    "FLYING"
+  ],
+  "weak_against_trait": [
+    "ARMOURED"
+  ],
+  "stats": {
+    "cost": 130,
+    "damage": 9.0,
+    "fire_rate": 1.5,
+    "range": 345.0,
+    "projectile_speed": 900.0,
+    "splash_radius": 82.5,
+    "splash_edge_factor": 0.5,
+    "damage_type": "EXPLOSIVE",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

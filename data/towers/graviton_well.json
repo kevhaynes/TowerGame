@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "graviton_well",
+  "display_name": "Graviton Well",
+  "description": "A singularity that pulls enemies together along the path.",
+  "sprite": "res://assets/sprites/placeholder_graviton_well.svg",
+  "behaviour": "res://scripts/combat/towers/graviton_well_tower.gd",
+  "strong_against_trait": [],
+  "weak_against_trait": [],
+  "stats": {
+    "cost": 160,
+    "damage_per_second": 2.0,
+    "pull_speed": 60.0,
+    "range": 255.0,
+    "damage_type": "ENERGY",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

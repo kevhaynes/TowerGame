@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "machine_gun",
+  "display_name": "Machine Gun",
+  "description": "A rapid-firing, single-target kinetic turret.",
+  "sprite": "res://assets/sprites/placeholder_machine_gun.svg",
+  "projectile_sprite": "res://assets/sprites/placeholder_machine_gun_bullet.svg",
+  "behaviour": "res://scripts/combat/towers/machine_gun_tower.gd",
+  "strong_against_trait": [
+    "MECHANICAL"
+  ],
+  "weak_against_trait": [
+    "ARMOURED"
+  ],
+  "stats": {
+	"cost": 100,
+	"damage_per_shot": 6.0,
+	"fire_rate": 4.0,
+	"range": 330.0,
+	"projectile_speed": 780.0,
+	"damage_type": "KINETIC",
+	"targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}

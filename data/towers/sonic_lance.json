@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "sonic_lance",
+  "display_name": "Sonic Lance",
+  "description": "A focused acoustic beam that knocks enemies back along the path.",
+  "sprite": "res://assets/sprites/placeholder_sonic_lance.svg",
+  "behaviour": "res://scripts/combat/towers/sonic_lance_tower.gd",
+  "strong_against_trait": [
+    "ORGANIC"
+  ],
+  "weak_against_trait": [
+    "ARMOURED"
+  ],
+  "stats": {
+    "cost": 150,
+    "damage": 6.0,
+    "fire_rate": 0.7,
+    "range": 285.0,
+    "knockback_distance": 90.0,
+    "damage_type": "KINETIC",
+    "targeting_mode": "FIRST"
+  },
+  "upgrade_branches": []
+}
